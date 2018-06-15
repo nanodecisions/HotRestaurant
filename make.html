@@ -22,11 +22,11 @@
                 <hr style="width: 100%; color: rgb(156, 148, 148); height: 1px; background-color: rgb(156, 148, 148);" />
                 <h2>Make Your Reservation</h2>
                 <!-- Single button -->
-                <button type="button" class="btn btn-primary">
-                    <span class="glyphicon glyphicon-th-list"></span> View Tables</button>
+                <a href="/view"><button type="button" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-th-list"></span> View Tables</button></a>
 
-                <button type="button" class="btn btn-default">
-                    <span class="glyphicon glyphicon-home"></span>
+                    <a href="/index"><button type="button" class="btn btn-default">
+                    <span class="glyphicon glyphicon-home"></span></a>
                 </button>
 
             </div>
@@ -94,14 +94,14 @@
             name: $("#name").val().trim(),
             number: $("#phone_num").val().trim(),
             email: $("#email").val().trim(),
-            id: $("#id").val().trim()
+            //id: $("#id").val().trim()
           };
     
           // Question: What does this code do??
           $.post("/make", newReservation)
             .then(function(data) {
               console.log("make.html", data);
-              alert("Adding character...");
+              alert("Adding ...");
             });
         });
       </script>
