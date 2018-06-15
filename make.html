@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Hot-Restaurent</title>
+    <!-- Latest compiled and minified CSS & JS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+        <script
+        src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <div class="text-center">
+                <h1>
+                    <span class="glyphicon glyphicon-fire"></span>Hot Restaurant!</h1>
+                <hr style="width: 100%; color: rgb(156, 148, 148); height: 1px; background-color: rgb(156, 148, 148);" />
+                <h2>Make Your Reservation</h2>
+                <!-- Single button -->
+                <button type="button" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-th-list"></span> View Tables</button>
+
+                <button type="button" class="btn btn-default">
+                    <span class="glyphicon glyphicon-home"></span>
+                </button>
+
+            </div>
+        </div>
+
+
+        <div class="row">
+
+            <div class="col-lg-12">
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            <strong>Table Reservation</strong>
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <form method="POST" role="form">
+
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" class="form-control" id="name">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="role">Phone Number</label>
+                                <input type="text" class="form-control" id="phone_num">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="age">Email</label>
+                                <input type="text" class="form-control" id="email">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="force-points">Unique ID</label>
+                                <input type="text" class="form-control" id="id">
+                            </div>
+
+                        </form>
+                        <br>
+                        <div class="text-right">
+                            <button type="submit" class="btn btn-primary btn-md" id="add-btn">
+                                submit</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <a href="#">API Table Link | </a>
+        <a href="#">API Wait List</a>
+
+
+    </div>
+
+
+
+    <script type="text/javascript">
+        // Question: What does this code do?
+        $("#add-btn").on("click", function(event) {
+          event.preventDefault();
+          var newReservation = {
+            name: $("#name").val().trim(),
+            number: $("#phone_num").val().trim(),
+            email: $("#email").val().trim(),
+            id: $("#id").val().trim()
+          };
+    
+          // Question: What does this code do??
+          $.post("/make", newReservation)
+            .then(function(data) {
+              console.log("make.html", data);
+              alert("Adding character...");
+            });
+        });
+      </script>
+
+</body>
+
+</html>
