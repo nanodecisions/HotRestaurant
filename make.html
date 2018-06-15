@@ -94,14 +94,14 @@
             name: $("#name").val().trim(),
             number: $("#phone_num").val().trim(),
             email: $("#email").val().trim(),
-            id: $("#id").val().trim()
+            //id: $("#id").val().trim()
           };
     
           // Question: What does this code do??
           $.post("/make", newReservation)
             .then(function(data) {
               console.log("make.html", data);
-              alert("Adding character...");
+              alert("Adding ...");
             });
         });
       </script>
