@@ -30,6 +30,10 @@ app.get('/make', (req, res) => {
   res.sendFile(path.join(__dirname, 'make.html'));
 });
 
+app.get('/view.css', (req, res) => {
+  res.sendFile(path.join(__dirname, 'view.css'));
+});
+
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '404.html'));
 });
