@@ -11,6 +11,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 const reservations = [];
+const waitList = [];
 let currentID = 0;
 
 app.get('/', (req, res) => {
@@ -22,7 +23,7 @@ app.get('/view', (req, res) => {
 });
 
 app.get('/query', (req, res) => {
-  res.json(reservations);
+  res.json({ reservations, waitList });
 });
 
 app.get('/make', (req, res) => {
@@ -41,6 +42,8 @@ app.post('/make', (req, res) => {
 
     status = 'Success';
   } else {
+    waitList.push(reservation);
+
     status = 'NoMoreTables';
   }
 
