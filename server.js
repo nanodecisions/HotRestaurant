@@ -20,6 +20,10 @@ app.get('/view', (req, res) => {
   res.sendFile(path.join(__dirname, 'view.html'));
 });
 
+app.get('/query', (req, res) => {
+  res.json(reservations);
+});
+
 app.get('/make', (req, res) => {
   res.sendFile(path.join(__dirname, 'make.html'));
 });
