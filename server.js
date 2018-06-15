@@ -30,6 +30,10 @@ app.get('/make', (req, res) => {
   res.sendFile(path.join(__dirname, 'make.html'));
 });
 
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '404.html'));
+});
+
 app.post('/make', (req, res) => {
   const reservation = req.body;
 
