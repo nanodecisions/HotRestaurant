@@ -23,12 +23,12 @@
                 <hr style="width: 100%; color: rgb(156, 148, 148); height: 1px; background-color: rgb(156, 148, 148);" />
                 <h2>Current Reservation And Waiting List</h2>
                 <!-- Single button -->
-                <button type="button" class="btn btn-danger">
-                    <span class="glyphicon glyphicon-folder-close"></span> Make Reservation</button>
+                <a href="/make"><button type="button" class="btn btn-danger">
+                    <span class="glyphicon glyphicon-folder-close"></span> Make Reservation</button></a>
 
-                <button type="button" class="btn btn-default">
+                <a href="/index"><button type="button" class="btn btn-default">
                     <span class="glyphicon glyphicon-home"></span>
-                </button>
+                </button></a>
 
             </div>
         </div>
@@ -72,6 +72,15 @@
 
     </div>
     
+
+    <script type="text/javascript">
+        $("#search-btn").on("click", function() {
+         
+        });
+      </script>
+
+
+
 </body>
 
 </html>
