@@ -11,6 +11,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 const reservations = [];
+let currentID = 0;
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
@@ -30,6 +31,8 @@ app.get('/make', (req, res) => {
 
 app.post('/make', (req, res) => {
   const reservation = req.body;
+
+  reservation.id = currentID++;
 
   let status;
 
