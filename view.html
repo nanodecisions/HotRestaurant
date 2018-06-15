@@ -7,10 +7,7 @@
     <!-- Latest compiled and minified CSS & JS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
         crossorigin="anonymous">
-        <script
-        src="https://code.jquery.com/jquery-3.3.1.js"
-        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 
 </head>
 
@@ -23,12 +20,16 @@
                 <hr style="width: 100%; color: rgb(156, 148, 148); height: 1px; background-color: rgb(156, 148, 148);" />
                 <h2>Current Reservation And Waiting List</h2>
                 <!-- Single button -->
-                <a href="/make"><button type="button" class="btn btn-danger">
-                    <span class="glyphicon glyphicon-folder-close"></span> Make Reservation</button></a>
+                <a href="/make">
+                    <button type="button" class="btn btn-danger">
+                        <span class="glyphicon glyphicon-folder-close"></span> Make Reservation</button>
+                </a>
 
-                <a href="/"><button type="button" class="btn btn-default">
-                    <span class="glyphicon glyphicon-home"></span>
-                </button></a>
+                <a href="/">
+                    <button type="button" class="btn btn-default">
+                        <span class="glyphicon glyphicon-home"></span>
+                    </button>
+                </a>
 
             </div>
         </div>
@@ -42,6 +43,7 @@
                     <div class="panel-heading">
                         <h3 class="panel-title">
                             <strong>Current Reservations</strong>
+                            <ul id="reserved"></ul>
                         </h3>
                     </div>
                 </div>
@@ -57,6 +59,7 @@
                     <div class="panel-heading">
                         <h3 class="panel-title">
                             <strong>Waiting List</strong>
+                            <ul id="wait-list-table"></ul>
                         </h3>
                     </div>
                 </div>
@@ -71,13 +74,32 @@
 
 
     </div>
-    
+
 
     <script type="text/javascript">
-        $("#search-btn").on("click", function() {
-         
+        $(document).ready(function () {
+
+            $.ajax({
+                url: "/query",
+                method: "GET",
+                success: function (data) {
+                    populateTable(data.reservations, 'reserved');
+                    populateTable(data.waitList, 'wait-list-table');
+                }
+            });
+
         });
-      </script>
+
+        function populateTable(data, id) {
+            for(var i=0;i<data.length;i++){
+                console.log(data);
+                var li = $('<li>');
+                li.text((i + 1) + ': ' + data[i].name);
+
+                $('#' + id).append(li);
+            }
+        }
+    </script>
 
 
 
