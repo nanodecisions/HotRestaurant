@@ -18,7 +18,7 @@
   "homepage": "https://github.com/CharlesJS-Homework/HotRestaurant#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
-    "express": "^4.16.3"
+    "express": "^4.17.3"
   },
   "devDependencies": {
     "eslint": "^4.19.1",
